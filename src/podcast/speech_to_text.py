@@ -1,9 +1,11 @@
 import os 
 from groq import Groq
 from dotenv import load_dotenv
+import streamlit as st
+
 load_dotenv()
 
-API_KEY = os.getenv("GROQ_API_KEY")
+API_KEY = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
 client = Groq(api_key = API_KEY)
 model = 'whisper-large-v3'
 
